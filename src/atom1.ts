@@ -158,7 +158,7 @@ export default (ins: Feed) => {
     base.feed.entry.push(entry);
   });
 
-  return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 });
+  return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4, attributeValueFn: function (value) { return encodeHTML(value) } });
 };
 
 const formatAuthor = (author: Author) => {
@@ -182,3 +182,12 @@ const formatCategory = (category: Category) => {
     }
   };
 };
+
+const encodeHTML = (value: String) => {
+  return value.replace(/&quot;/g, '"')  // convert quote back before converting amp
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
