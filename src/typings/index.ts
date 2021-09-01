@@ -3,6 +3,7 @@ export interface Item {
   id?: string;
   link: string;
   date: Date;
+  releaseDate: Date;
 
   description?: string;
   content?: string;

@@ -63,6 +63,9 @@ export default (ins: Feed) => {
     if (item.date) {
       feedItem.date_modified = item.date.toISOString();
     }
+    if (item.releaseDate) {
+      feedItem.releaseDate = item.releaseDate.toISOString();
+    }
     if (item.published) {
       feedItem.date_published = item.published.toISOString();
     }
