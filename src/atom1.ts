@@ -88,7 +88,8 @@ export default (ins: Feed) => {
       title: { _attributes: { type: "html" }, _cdata: item.title },
       id: item.id || item.link,
       link: [{ _attributes: { href: item.link } }],
-      updated: item.date.toISOString()
+      updated: item.date.toISOString(),
+      releaseDate: item.releaseDate.toISOString()
     };
 
     //
